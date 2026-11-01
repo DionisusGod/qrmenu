@@ -1,5 +1,5 @@
 let cachedMenu = null;
-let inMemoryAdminToken = '';
+const ADMIN_TOKEN_KEY = 'qr_menu_admin_token';
 
 async function parseJsonResponse(res, fallbackErrorMsg) {
   const text = await res.text();
@@ -36,17 +36,20 @@ export function getCachedMenu() {
 }
 
 export function getAdminToken() {
-  return inMemoryAdminToken;
+  return localStorage.getItem(ADMIN_TOKEN_KEY) || '';
 }
 
 export function setAdminToken(token) {
-  inMemoryAdminToken = token || '';
-  sessionStorage.removeItem('qr_menu_admin_token');
+  if (token) {
+    localStorage.setItem(ADMIN_TOKEN_KEY, token);
+  } else {
+    localStorage.removeItem(ADMIN_TOKEN_KEY);
+  }
 }
 
 export function logoutAdmin() {
-  inMemoryAdminToken = '';
-  sessionStorage.removeItem('qr_menu_admin_token');
+  localStorage.removeItem(ADMIN_TOKEN_KEY);
+  sessionStorage.removeItem(ADMIN_TOKEN_KEY);
 }
 
 export async function verifyAdminSession() {
@@ -146,3 +149,4 @@ export async function uploadImageFile(file) {
   }
   return data.url;
 }
+

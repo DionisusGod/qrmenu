@@ -420,9 +420,6 @@ async function handleRouteChange() {
     return;
   }
 
-  // Automatically lock admin session as soon as user leaves /admin
-  logoutAdmin();
-
   const menuData = await fetchMenuData();
 
   if (route.view === 'brand') {
@@ -438,3 +435,4 @@ window.addEventListener('hashchange', handleRouteChange);
 window.addEventListener('popstate', handleRouteChange);
 
 handleRouteChange();
+
