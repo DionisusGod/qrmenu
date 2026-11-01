@@ -14,6 +14,7 @@ let adminState = {
   authenticated: false,
   selectedBrandId: sessionStorage.getItem(BRAND_STORAGE_KEY) || null,
   editingProduct: null, // { brandId, categoryId, product } or null
+  croppingProduct: null, // { categoryId, productId, image, crop: { x, y, zoom, fit } } or null
   isNewProduct: false,
   showPasswordModal: false,
   toastMessage: '',
@@ -64,6 +65,21 @@ function stripCurrency(price) {
 function formatPrice(price) {
   const cleaned = stripCurrency(price);
   return cleaned ? `${cleaned} ₺` : '';
+}
+
+function normalizeCrop(crop) {
+  return {
+    x: Math.round(Number(crop?.x) || 0),
+    y: Math.round(Number(crop?.y) || 0),
+    zoom: Number(Number(crop?.zoom || 1).toFixed(2)),
+    fit: crop?.fit === 'contain' ? 'contain' : 'cover'
+  };
+}
+
+function getProductImageStyle(crop) {
+  if (!crop) return '';
+  const c = normalizeCrop(crop);
+  return `object-fit: ${c.fit}; transform: translate(${c.x}%, ${c.y}%) scale(${c.zoom}); transform-origin: center center;`;
 }
 
 export async function renderAdminView(container) {
@@ -347,28 +363,25 @@ function renderDashboard(container, menuData, preserveScroll = true) {
                             ? 'bg-neutral-100 border-neutral-300 opacity-70'
                             : 'bg-offwhite/70 border-neutral-200'
                         }">
-                          <label
-                            title="Fotoğrafı anında değiştirmek için tıklayın"
-                            class="relative w-16 h-16 rounded-lg overflow-hidden bg-white border border-neutral-300 shrink-0 cursor-pointer group"
+                          <button
+                            type="button"
+                            data-quick-photo="${escapeHtml(prod.id)}"
+                            data-cat-id="${escapeHtml(cat.id)}"
+                            title="Fotoğrafı ve kart görünümünü (kırpma/boyut/konum) düzenlemek için tıklayın"
+                            class="relative w-16 h-16 rounded-lg overflow-hidden bg-white border border-neutral-300 shrink-0 cursor-pointer group p-0"
                           >
                             <img
                               data-prod-thumb="${escapeHtml(prod.id)}"
                               src="${escapeHtml(prod.image)}"
                               alt="${escapeHtml(prod.name)}"
-                              class="w-full h-full object-cover group-hover:opacity-80 transition"
+                              style="${escapeHtml(getProductImageStyle(prod.imageCrop))}"
+                              class="w-full h-full object-cover group-hover:opacity-80 transition pointer-events-none"
                             />
                             <span
-                              style="background-color: rgba(20,20,19,0.72); color: #FFFFFF;"
+                              style="background-color: rgba(20,20,19,0.75); color: #FFFFFF;"
                               class="absolute bottom-0.5 right-0.5 text-[10px] px-1 py-0.5 rounded leading-none pointer-events-none"
                             >📷</span>
-                            <input
-                              type="file"
-                              accept="image/*"
-                              data-quick-photo="${escapeHtml(prod.id)}"
-                              data-cat-id="${escapeHtml(cat.id)}"
-                              class="hidden"
-                            />
-                          </label>
+                          </button>
                           <div class="flex-1 min-w-0">
                             <div class="text-sm cal-bold text-neutral-900 truncate">${escapeHtml(prod.name)}</div>
                             <div class="text-xs cal-normal text-neutral-600 truncate mt-0.5">${escapeHtml(prod.description || '')}</div>
@@ -428,6 +441,9 @@ function renderDashboard(container, menuData, preserveScroll = true) {
       <!-- Product Add / Edit Modal -->
       ${adminState.editingProduct ? renderProductModalHtml(activeBrand) : ''}
 
+      <!-- Photo & Grid Preview Crop/Position Modal -->
+      ${adminState.croppingProduct ? renderPhotoCropModalHtml(activeBrand) : ''}
+
       <!-- Password Change Modal -->
       ${adminState.showPasswordModal ? renderPasswordModalHtml() : ''}
 
@@ -440,6 +456,183 @@ function renderDashboard(container, menuData, preserveScroll = true) {
   }
 
   bindDashboardEvents(container, menuData, activeBrand);
+}
+
+function renderPhotoCropModalHtml(activeBrand) {
+  const { categoryId, productId, image, crop } = adminState.croppingProduct;
+  const cat = activeBrand.categories.find((c) => c.id === categoryId);
+  const prod = cat?.products.find((p) => p.id === productId);
+  if (!prod) return '';
+
+  const c = normalizeCrop(crop);
+
+  return `
+    <div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
+      <div class="bg-white w-full max-w-md rounded-2xl p-5 shadow-2xl space-y-4 max-h-[94dvh] overflow-y-auto">
+        <div class="flex items-start justify-between gap-2">
+          <div>
+            <h3 class="text-base sm:text-lg cal-bold text-neutral-900">Fotoğraf & Kart Önizleme Düzenleyici</h3>
+            <p class="text-[11.5px] cal-normal text-neutral-600 mt-0.5">
+              Detay sayfasındaki tam boy fotoğraf bozulmaz; buradaki ayar sadece menüdeki 2'li kart görünümünü düzenler.
+            </p>
+          </div>
+          <button
+            type="button"
+            id="btn-close-crop-modal"
+            class="text-sm cal-bold px-2.5 py-1 rounded-lg bg-neutral-200 text-neutral-900 hover:bg-neutral-300 cursor-pointer shrink-0"
+          >✕</button>
+        </div>
+
+        <!-- Upload / Replace Photo Button -->
+        <div class="flex items-center justify-between gap-2 bg-neutral-50 p-2.5 rounded-xl border border-neutral-200">
+          <span class="text-xs cal-normal text-neutral-700 truncate">${escapeHtml(prod.name)}</span>
+          <label
+            style="background-color: #2563EB; color: #FFFFFF;"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs cal-bold hover:opacity-95 cursor-pointer shrink-0 shadow-2xs"
+          >
+            <span>📤 Yeni Fotoğraf Yükle</span>
+            <input type="file" id="crop-modal-file-input" accept="image/*" class="hidden" />
+          </label>
+        </div>
+
+        <!-- Live 1:1 Menu Grid Card Preview -->
+        <div class="bg-offwhite rounded-2xl p-4 border border-neutral-200/80 flex flex-col items-center">
+          <div class="text-[11px] cal-bold text-neutral-600 mb-2">
+            ✋ Fotoğrafın üzerine basılı tutup sürükleyerek konumlandırabilirsiniz
+          </div>
+
+          <article
+            style="width: 182px; height: 220px;"
+            class="product-card rounded-2xl overflow-hidden flex flex-col select-none border border-black/[0.05] bg-white shadow-md"
+          >
+            <div
+              id="crop-interactive-area"
+              style="touch-action: none; cursor: grab;"
+              class="relative w-full h-[57%] bg-neutral-100/70 overflow-hidden shrink-0"
+            >
+              <img
+                id="crop-preview-img"
+                src="${escapeHtml(image)}"
+                alt="${escapeHtml(prod.name)}"
+                draggable="false"
+                style="${escapeHtml(getProductImageStyle(c))}"
+                class="w-full h-full object-cover pointer-events-none select-none"
+              />
+            </div>
+            <div class="flex-1 flex flex-col justify-between p-2.5 min-h-0 bg-white">
+              <div class="min-w-0">
+                <h4 class="text-[13.5px] leading-tight cal-bold truncate text-neutral-900">${escapeHtml(prod.name)}</h4>
+                <p class="text-[11.5px] leading-snug cal-normal italic opacity-60 truncate mt-0.5 text-neutral-700">
+                  ${escapeHtml(prod.description || '')}
+                </p>
+              </div>
+              <div class="text-[13px] cal-normal pt-1 text-neutral-900">${escapeHtml(formatPrice(prod.price))}</div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Fit Mode & Reset Controls -->
+        <div class="flex items-center justify-between gap-2">
+          <div class="inline-flex rounded-xl p-1 bg-neutral-100 border border-neutral-200">
+            <button
+              type="button"
+              id="btn-fit-cover"
+              style="${c.fit === 'cover' ? 'background-color:#141413;color:#FFFFFF;' : 'color:#404040;'}"
+              class="px-3 py-1.5 rounded-lg text-xs cal-bold transition cursor-pointer"
+            >
+              Çerçeveyi Doldur
+            </button>
+            <button
+              type="button"
+              id="btn-fit-contain"
+              style="${c.fit === 'contain' ? 'background-color:#141413;color:#FFFFFF;' : 'color:#404040;'}"
+              class="px-3 py-1.5 rounded-lg text-xs cal-bold transition cursor-pointer"
+            >
+              Tam Sığdır
+            </button>
+          </div>
+
+          <button
+            type="button"
+            id="btn-crop-reset"
+            class="px-3 py-1.5 rounded-xl border border-neutral-300 bg-white text-neutral-800 text-xs cal-bold hover:bg-neutral-100 cursor-pointer"
+          >
+            ↺ Sıfırla
+          </button>
+        </div>
+
+        <!-- Sliders: Zoom, Horizontal (X), Vertical (Y) -->
+        <div class="space-y-3 bg-neutral-50 p-3.5 rounded-xl border border-neutral-200">
+          <div>
+            <div class="flex justify-between text-xs cal-bold text-neutral-800 mb-1">
+              <span>🔍 Boyut / Yakınlaştırma (Zoom)</span>
+              <span id="crop-zoom-val">${Math.round(c.zoom * 100)}%</span>
+            </div>
+            <input
+              type="range"
+              id="crop-zoom-slider"
+              min="0.5"
+              max="3"
+              step="0.02"
+              value="${c.zoom}"
+              class="w-full accent-blue-600 cursor-pointer"
+            />
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs cal-bold text-neutral-800 mb-1">
+              <span>↔ Yatay Konum (Sol / Sağ)</span>
+              <span id="crop-x-val">${c.x}%</span>
+            </div>
+            <input
+              type="range"
+              id="crop-x-slider"
+              min="-100"
+              max="100"
+              step="1"
+              value="${c.x}"
+              class="w-full accent-blue-600 cursor-pointer"
+            />
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs cal-bold text-neutral-800 mb-1">
+              <span>↕ Dikey Konum (Yukarı / Aşağı)</span>
+              <span id="crop-y-val">${c.y}%</span>
+            </div>
+            <input
+              type="range"
+              id="crop-y-slider"
+              min="-100"
+              max="100"
+              step="1"
+              value="${c.y}"
+              class="w-full accent-blue-600 cursor-pointer"
+            />
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end gap-2 pt-2 border-t border-neutral-200">
+          <button
+            type="button"
+            id="btn-cancel-crop-modal"
+            class="px-4 py-2.5 rounded-xl border border-neutral-300 bg-neutral-100 text-neutral-800 text-xs cal-bold hover:bg-neutral-200 cursor-pointer"
+          >
+            İptal
+          </button>
+          <button
+            type="button"
+            id="btn-save-crop-modal"
+            style="background-color: #059669; color: #FFFFFF;"
+            class="px-5 py-2.5 rounded-xl text-xs cal-bold hover:opacity-95 cursor-pointer shadow-xs"
+          >
+            Görünümü Kaydet
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 function renderProductModalHtml(activeBrand) {
@@ -656,7 +849,7 @@ function bindDashboardEvents(container, menuData, activeBrand) {
     }
   });
 
-  // Brand logo upload (Updates in-place without resetting scroll or brand tab!)
+  // Brand logo upload
   container.querySelector('#brand-logo-upload')?.addEventListener('change', async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -799,32 +992,22 @@ function bindDashboardEvents(container, menuData, activeBrand) {
     });
   });
 
-  // Quick 1-Click Product Photo Upload Shortcut
-  container.querySelectorAll('[data-quick-photo]').forEach((input) => {
-    input.addEventListener('change', async (e) => {
-      const file = e.target.files?.[0];
-      if (!file) return;
-      const prodId = input.getAttribute('data-quick-photo');
-      const catId = input.getAttribute('data-cat-id');
+  // Open Photo & Grid Preview Crop/Position Modal when clicking product thumbnail
+  container.querySelectorAll('[data-quick-photo]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const prodId = btn.getAttribute('data-quick-photo');
+      const catId = btn.getAttribute('data-cat-id');
       const cat = activeBrand.categories.find((c) => c.id === catId);
       const prod = cat?.products.find((p) => p.id === prodId);
       if (!prod) return;
 
-      try {
-        showToast(container, 'Ürün fotoğrafı yükleniyor...');
-        const uploadedUrl = await uploadImageFile(file);
-        prod.image = uploadedUrl;
-        await saveMenuData(menuData);
-
-        const thumbEl = container.querySelector(`[data-prod-thumb="${CSS.escape(prodId)}"]`);
-        if (thumbEl) {
-          thumbEl.src = uploadedUrl;
-        }
-        e.target.value = '';
-        showToast(container, `"${prod.name}" fotoğrafı güncellendi.`);
-      } catch (err) {
-        showToast(container, err.message, 'error');
-      }
+      adminState.croppingProduct = {
+        categoryId: catId,
+        productId: prodId,
+        image: prod.image,
+        crop: normalizeCrop(prod.imageCrop)
+      };
+      renderDashboard(container, menuData, true);
     });
   });
 
@@ -918,6 +1101,164 @@ function bindDashboardEvents(container, menuData, activeBrand) {
     });
   });
 
+  // Photo Crop & Grid Preview Modal Events
+  if (adminState.croppingProduct) {
+    const closeCropModal = () => {
+      adminState.croppingProduct = null;
+      renderDashboard(container, menuData, true);
+    };
+
+    container.querySelector('#btn-close-crop-modal')?.addEventListener('click', closeCropModal);
+    container.querySelector('#btn-cancel-crop-modal')?.addEventListener('click', closeCropModal);
+
+    const previewImg = container.querySelector('#crop-preview-img');
+    const interactiveArea = container.querySelector('#crop-interactive-area');
+    const zoomSlider = container.querySelector('#crop-zoom-slider');
+    const xSlider = container.querySelector('#crop-x-slider');
+    const ySlider = container.querySelector('#crop-y-slider');
+    const zoomVal = container.querySelector('#crop-zoom-val');
+    const xVal = container.querySelector('#crop-x-val');
+    const yVal = container.querySelector('#crop-y-val');
+    const btnFitCover = container.querySelector('#btn-fit-cover');
+    const btnFitContain = container.querySelector('#btn-fit-contain');
+
+    const updateLivePreview = () => {
+      const c = normalizeCrop(adminState.croppingProduct.crop);
+      adminState.croppingProduct.crop = c;
+      if (previewImg) {
+        previewImg.style.cssText = getProductImageStyle(c);
+      }
+      if (zoomSlider) zoomSlider.value = String(c.zoom);
+      if (xSlider) xSlider.value = String(c.x);
+      if (ySlider) ySlider.value = String(c.y);
+      if (zoomVal) zoomVal.textContent = `${Math.round(c.zoom * 100)}%`;
+      if (xVal) xVal.textContent = `${c.x}%`;
+      if (yVal) yVal.textContent = `${c.y}%`;
+      if (btnFitCover && btnFitContain) {
+        btnFitCover.style.cssText =
+          c.fit === 'cover' ? 'background-color:#141413;color:#FFFFFF;' : 'color:#404040;';
+        btnFitContain.style.cssText =
+          c.fit === 'contain' ? 'background-color:#141413;color:#FFFFFF;' : 'color:#404040;';
+      }
+    };
+
+    zoomSlider?.addEventListener('input', () => {
+      adminState.croppingProduct.crop.zoom = Number(zoomSlider.value);
+      updateLivePreview();
+    });
+
+    xSlider?.addEventListener('input', () => {
+      adminState.croppingProduct.crop.x = Number(xSlider.value);
+      updateLivePreview();
+    });
+
+    ySlider?.addEventListener('input', () => {
+      adminState.croppingProduct.crop.y = Number(ySlider.value);
+      updateLivePreview();
+    });
+
+    btnFitCover?.addEventListener('click', () => {
+      adminState.croppingProduct.crop.fit = 'cover';
+      updateLivePreview();
+    });
+
+    btnFitContain?.addEventListener('click', () => {
+      adminState.croppingProduct.crop.fit = 'contain';
+      updateLivePreview();
+    });
+
+    container.querySelector('#btn-crop-reset')?.addEventListener('click', () => {
+      adminState.croppingProduct.crop = { x: 0, y: 0, zoom: 1, fit: 'cover' };
+      updateLivePreview();
+    });
+
+    // Pointer drag (works with both Finger Touch on mobile and Mouse on desktop)
+    let isDragging = false;
+    let startClientX = 0;
+    let startClientY = 0;
+    let startCropX = 0;
+    let startCropY = 0;
+
+    interactiveArea?.addEventListener('pointerdown', (e) => {
+      isDragging = true;
+      startClientX = e.clientX;
+      startClientY = e.clientY;
+      startCropX = Number(adminState.croppingProduct.crop.x) || 0;
+      startCropY = Number(adminState.croppingProduct.crop.y) || 0;
+      interactiveArea.style.cursor = 'grabbing';
+      interactiveArea.setPointerCapture?.(e.pointerId);
+    });
+
+    interactiveArea?.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      const rect = interactiveArea.getBoundingClientRect();
+      const deltaXPercent = ((e.clientX - startClientX) / (rect.width || 180)) * 100;
+      const deltaYPercent = ((e.clientY - startClientY) / (rect.height || 125)) * 100;
+
+      adminState.croppingProduct.crop.x = Math.max(-100, Math.min(100, Math.round(startCropX + deltaXPercent)));
+      adminState.croppingProduct.crop.y = Math.max(-100, Math.min(100, Math.round(startCropY + deltaYPercent)));
+      updateLivePreview();
+    });
+
+    const stopDrag = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      if (interactiveArea) interactiveArea.style.cursor = 'grab';
+    };
+    interactiveArea?.addEventListener('pointerup', stopDrag);
+    interactiveArea?.addEventListener('pointercancel', stopDrag);
+
+    // Upload new photo directly inside the crop modal
+    container.querySelector('#crop-modal-file-input')?.addEventListener('change', async (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      try {
+        showToast(container, 'Yeni fotoğraf yükleniyor...');
+        const uploadedUrl = await uploadImageFile(file);
+        adminState.croppingProduct.image = uploadedUrl;
+        adminState.croppingProduct.crop = { x: 0, y: 0, zoom: 1, fit: 'cover' };
+        if (previewImg) {
+          previewImg.src = uploadedUrl;
+        }
+        updateLivePreview();
+        e.target.value = '';
+        showToast(container, 'Fotoğraf yüklendi! Şimdi kart üzerindeki konumunu ayarlayıp kaydedebilirsiniz.');
+      } catch (err) {
+        showToast(container, err.message, 'error');
+      }
+    });
+
+    // Save Crop & Photo changes
+    container.querySelector('#btn-save-crop-modal')?.addEventListener('click', async () => {
+      const { categoryId, productId, image, crop } = adminState.croppingProduct;
+      const cat = activeBrand.categories.find((c) => c.id === categoryId);
+      const prod = cat?.products.find((p) => p.id === productId);
+      if (!prod) return;
+
+      const saveBtn = container.querySelector('#btn-save-crop-modal');
+      if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Kaydediliyor...';
+      }
+
+      prod.image = image;
+      prod.imageCrop = normalizeCrop(crop);
+
+      try {
+        await saveMenuData(menuData);
+        adminState.croppingProduct = null;
+        renderDashboard(container, menuData, true);
+        showToast(container, `"${prod.name}" kart görünümü kaydedildi.`);
+      } catch (err) {
+        if (saveBtn) {
+          saveBtn.disabled = false;
+          saveBtn.textContent = 'Görünümü Kaydet';
+        }
+        showToast(container, err.message, 'error');
+      }
+    });
+  }
+
   // Product Modal Events
   if (adminState.editingProduct) {
     const closeModal = () => {
@@ -960,6 +1301,7 @@ function bindDashboardEvents(container, menuData, activeBrand) {
         description: container.querySelector('#prod-desc-input').value.trim(),
         price: formatPrice(container.querySelector('#prod-price-input').value),
         image: container.querySelector('#prod-image-url').value.trim() || '/images/tavuk-doner.svg',
+        imageCrop: adminState.editingProduct.product.imageCrop,
         available: container.querySelector('#prod-available-check').checked
       };
 

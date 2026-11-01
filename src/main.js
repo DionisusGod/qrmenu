@@ -22,6 +22,15 @@ function formatPrice(price) {
   return cleaned ? `${cleaned} ₺` : '';
 }
 
+function getProductImageStyle(crop) {
+  if (!crop) return '';
+  const x = Number(crop.x) || 0;
+  const y = Number(crop.y) || 0;
+  const zoom = Number(crop.zoom) || 1;
+  const fit = crop.fit === 'contain' ? 'contain' : 'cover';
+  return `object-fit: ${fit}; transform: translate(${x}%, ${y}%) scale(${zoom}); transform-origin: center center;`;
+}
+
 function parseRoute() {
   const pathname = window.location.pathname;
   const hash = window.location.hash.replace(/^#\/?/, '');
@@ -189,6 +198,7 @@ function renderBrandMenuView(menuData, brandId) {
                             alt="${escapeHtml(prod.name)}"
                             loading="lazy"
                             decoding="async"
+                            style="${escapeHtml(getProductImageStyle(prod.imageCrop))}"
                             class="w-full h-full object-cover"
                           />
                         </div>
@@ -326,7 +336,7 @@ function setupCategoryScrollSpy(initialCatId) {
 }
 
 // ============================================================================
-// C. ÜRÜN DETAY SAYFASI (%60 vh Fotoğraf + Bold İsim + Normal Açıklama + Normal Fiyat)
+// C. ÜRÜN DETAY SAYFASI (Doğal Oran Fotoğraf + Bold İsim + Normal Açıklama + Normal Fiyat)
 // ============================================================================
 function renderProductDetailView(menuData, brandId, productId) {
   const brand = (menuData.brands || []).find((b) => b.id === brandId);
@@ -428,4 +438,3 @@ window.addEventListener('hashchange', handleRouteChange);
 window.addEventListener('popstate', handleRouteChange);
 
 handleRouteChange();
-
