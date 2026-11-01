@@ -6,14 +6,17 @@ export async function fetchMenuData(forceRefresh = false) {
     return cachedMenu;
   }
 
-  try {
-    const res = await fetch(`/api/menu?t=${Date.now()}`, { cache: 'no-store' });
-    if (res.ok) {
-      cachedMenu = await res.json();
-      return cachedMenu;
+  if (import.meta.env.DEV) {
+    try {
+      const res = await fetch(`/api/menu?t=${Date.now()}`, { cache: 'no-store' });
+      const contentType = res.headers.get('content-type') || '';
+      if (res.ok && contentType.includes('application/json')) {
+        cachedMenu = await res.json();
+        return cachedMenu;
+      }
+    } catch {
+      // Fallback to static JSON file
     }
-  } catch {
-    // Fallback to static JSON file
   }
 
   const fallbackRes = await fetch(`/data/menu.json?t=${Date.now()}`, { cache: 'no-store' });
