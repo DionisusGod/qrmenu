@@ -2,7 +2,16 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "public/data/menu.json"
+    }
+  },
   "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.js?__path=$1"
+    },
     {
       "source": "/((?!api/|data/|uploads/|logos/|images/|assets/).*)",
       "destination": "/index.html"
@@ -29,4 +38,3 @@
     }
   ]
 }
-

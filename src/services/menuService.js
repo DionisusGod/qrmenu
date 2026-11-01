@@ -1,22 +1,29 @@
 let cachedMenu = null;
 let inMemoryAdminToken = '';
 
+async function parseJsonResponse(res, fallbackErrorMsg) {
+  const text = await res.text();
+  try {
+    return JSON.parse(text);
+  } catch {
+    throw new Error(fallbackErrorMsg || `Sunucu yanıtı okunamadı (HTTP ${res.status}).`);
+  }
+}
+
 export async function fetchMenuData(forceRefresh = false) {
   if (cachedMenu && !forceRefresh) {
     return cachedMenu;
   }
 
-  if (import.meta.env.DEV) {
-    try {
-      const res = await fetch(`/api/menu?t=${Date.now()}`, { cache: 'no-store' });
-      const contentType = res.headers.get('content-type') || '';
-      if (res.ok && contentType.includes('application/json')) {
-        cachedMenu = await res.json();
-        return cachedMenu;
-      }
-    } catch {
-      // Fallback to static JSON file
+  try {
+    const res = await fetch(`/api/menu?t=${Date.now()}`, { cache: 'no-store' });
+    const contentType = res.headers.get('content-type') || '';
+    if (res.ok && contentType.includes('application/json')) {
+      cachedMenu = await res.json();
+      return cachedMenu;
     }
+  } catch {
+    // Fallback to static JSON file
   }
 
   const fallbackRes = await fetch(`/data/menu.json?t=${Date.now()}`, { cache: 'no-store' });
@@ -54,7 +61,7 @@ export async function verifyAdminSession() {
       logoutAdmin();
       return false;
     }
-    const data = await res.json();
+    const data = await parseJsonResponse(res, 'Oturum doğrulanamadı.');
     return Boolean(data.ok);
   } catch {
     return false;
@@ -67,7 +74,7 @@ export async function loginAdmin(password) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ password })
   });
-  const data = await res.json();
+  const data = await parseJsonResponse(res, 'Giriş sunucusuna ulaşılamadı.');
   if (!res.ok || !data.ok) {
     throw new Error(data.error || 'Giriş başarısız.');
   }
@@ -85,7 +92,7 @@ export async function changeAdminPassword(currentPassword, newPassword) {
     },
     body: JSON.stringify({ currentPassword, newPassword })
   });
-  const data = await res.json();
+  const data = await parseJsonResponse(res, 'Parola güncellenemedi.');
   if (!res.ok || !data.ok) {
     throw new Error(data.error || 'Parola güncellenemedi.');
   }
@@ -105,7 +112,7 @@ export async function saveMenuData(menuData) {
     },
     body: JSON.stringify(menuData)
   });
-  const data = await res.json();
+  const data = await parseJsonResponse(res, 'Menü kaydedilemedi.');
   if (!res.ok || !data.ok) {
     throw new Error(data.error || 'Menü kaydedilemedi.');
   }
@@ -133,10 +140,9 @@ export async function uploadImageFile(file) {
       dataUrl
     })
   });
-  const data = await res.json();
+  const data = await parseJsonResponse(res, 'Görsel yüklenemedi.');
   if (!res.ok || !data.ok) {
     throw new Error(data.error || 'Görsel yüklenemedi.');
   }
   return data.url;
 }
-
