@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" fill="none">
+  <g transform="translate(300, 90)">
+    <!-- Bold X Emblem -->
+    <path d="M-212 -32 L-162 28 M-162 -32 L-212 28" stroke="#D95326" stroke-width="14" stroke-linecap="round"/>
+    <!-- Brand Typography -->
+    <text x="-132" y="-2" font-family="'Cal Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-weight="700" letter-spacing="1.8" fill="#141413">X PİLAV BAGET</text>
+    <text x="-130" y="30" font-family="'Cal Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="400" letter-spacing="5" fill="#78756F">ÇITIR KOVA &amp; PİLAV</text>
+  </g>
+</svg>
+

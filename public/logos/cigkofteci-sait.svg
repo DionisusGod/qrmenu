@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" fill="none">
+  <g transform="translate(300, 90)">
+    <!-- Minimalist Spice & Leaf Emblem -->
+    <path d="M-212 18 C-212 -18 -182 -38 -152 -32 C-156 -2 -182 24 -212 18 Z" fill="#A62B1F"/>
+    <path d="M-178 26 C-166 2 -148 -12 -128 -12 C-132 12 -152 28 -178 26 Z" fill="#2E6F40"/>
+    <!-- Brand Typography -->
+    <text x="-105" y="-2" font-family="'Cal Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="38" font-weight="700" letter-spacing="1.5" fill="#141413">ÇİĞKÖFTECİ SAİT</text>
+    <text x="-103" y="30" font-family="'Cal Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="400" letter-spacing="4.5" fill="#78756F">GÜNLÜK TAZE ÇİĞKÖFTE</text>
+  </g>
+</svg>
+

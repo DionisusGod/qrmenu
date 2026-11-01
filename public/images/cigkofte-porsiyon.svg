@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#F4F0E6"/>
+  <circle cx="400" cy="300" r="220" fill="#EAE3D3"/>
+  <rect x="220" y="210" width="360" height="190" rx="40" fill="#FFFFFF"/>
+  <!-- Lettuce bed -->
+  <circle cx="280" cy="305" r="42" fill="#469252"/>
+  <circle cx="340" cy="315" r="44" fill="#3B8246"/>
+  <circle cx="400" cy="315" r="44" fill="#469252"/>
+  <circle cx="460" cy="315" r="44" fill="#3B8246"/>
+  <circle cx="520" cy="305" r="42" fill="#469252"/>
+  <!-- Cigkofte pieces -->
+  <rect x="275" y="265" width="34" height="68" rx="17" fill="#9E2B1E"/>
+  <rect x="328" y="265" width="34" height="68" rx="17" fill="#8C2318"/>
+  <rect x="382" y="265" width="34" height="68" rx="17" fill="#9E2B1E"/>
+  <rect x="436" y="265" width="34" height="68" rx="17" fill="#8C2318"/>
+  <!-- Lemon slice -->
+  <circle cx="515" cy="295" r="26" fill="#F2C94C"/>
+  <circle cx="515" cy="295" r="18" fill="#F7DC79"/>
+</svg>
+

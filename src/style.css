@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   MERKEZİ RENK AYARLARI (Tek Satırla Tüm Sitenin Rengini Değiştirin)
+   --------------------------------------------------------------------------
+   Websitesinin arkaplan rengini değiştirmek için aşağıdaki "--bg-main"
+   değerini istediğiniz HEX renk koduyla güncellemeniz yeterlidir.
+   Örnek alternatif tonlar:
+   - Sıcak Taş / Kum Grisi (Varsayılan): #E6E0D6
+   - Tok Füme Bej:                       #D5CFC5
+   - Sıcak Latte:                        #DFD5C6
+   - Kemik Beyazı:                       #FAF8F5
+   ========================================================================== */
+:root {
+  --bg-main: #E6E0D6;
+  --bg-card: #FFFFFF;
+  --text-primary: #141413;
+  --text-normal: #4A4843;
+  --card-shadow: 0 6px 18px rgba(20, 20, 19, 0.09);
+  --brand-card-shadow: 0 10px 26px rgba(20, 20, 19, 0.18), 0 4px 10px rgba(20, 20, 19, 0.10);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Cal Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overscroll-behavior-y: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   TİPOGRAFİ KURALLARI ("Cal Sans" Bold & Normal Ağırlık Hiyerarşisi)
+   ========================================================================== */
+.cal-bold {
+  font-family: 'Cal Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.cal-normal {
+  font-family: 'Cal Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  font-synthesis: weight;
+  letter-spacing: 0.025em;
+}
+
+/* ==========================================================================
+   PERFORMANS & 60FPS YARDIMCI SINIFLAR
+   ========================================================================== */
+.bg-offwhite {
+  background-color: var(--bg-main);
+}
+
+.brand-card {
+  background-color: transparent;
+  box-shadow: var(--brand-card-shadow);
+  transform: translateZ(0);
+  will-change: transform;
+  transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.16s ease;
+}
+
+.brand-card:active {
+  transform: scale(0.975);
+}
+
+.product-card {
+  background-color: var(--bg-card);
+  box-shadow: var(--card-shadow);
+  /* Ekranda dikey olarak 3 satır, yatayda 2 sütun görünecek optimum oran */
+  height: calc((100dvh - 104px) / 3);
+  min-height: 176px;
+  max-height: 250px;
+  transform: translateZ(0);
+  will-change: transform;
+  transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.product-card:active {
+  transform: scale(0.975);
+}
+
+/* Yatay kaydırılabilir kategori barında kaydırma çubuğunu gizle */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 60fps sayfa geçiş animasyonu */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.view-enter {
+  animation: fadeSlideUp 0.18s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}

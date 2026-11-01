@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#F4F1EA"/>
+  <circle cx="400" cy="300" r="210" fill="#EAE4D7"/>
+  <!-- Cup & Can -->
+  <rect x="305" y="185" width="95" height="215" rx="18" fill="#C83E2B"/>
+  <rect x="315" y="175" width="75" height="12" rx="6" fill="#B5B2AC"/>
+  <path d="M320 270 Q352 245 385 270" stroke="#FAF8F5" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- Ayran Cup -->
+  <path d="M415 215 L510 215 L496 398 L429 398 Z" fill="#FFFFFF"/>
+  <ellipse cx="462" cy="215" rx="52" ry="12" fill="#E6E2D8"/>
+  <rect x="432" y="275" width="60" height="45" rx="8" fill="#3B7A57"/>
+</svg>
+

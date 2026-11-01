@@ -1,0 +1,19 @@
+{
+  "name": "multi-brand-qr-menu",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server.js",
+    "tunnel": "ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -R 80:127.0.0.1:3000 nokey@localhost.run"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "tailwindcss": "^4.1.0",
+    "vite": "^6.2.0"
+  }
+}
+

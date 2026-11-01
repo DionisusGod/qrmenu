@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#F3EFE6"/>
+  <circle cx="400" cy="300" r="210" fill="#EAE3D2"/>
+  <!-- Wrap / Durum Illustration -->
+  <g transform="translate(400, 300) rotate(-18)">
+    <rect x="-150" y="-68" width="300" height="136" rx="68" fill="#E3B778"/>
+    <path d="M-110 -68 C-90 -20 -90 20 -110 68" stroke="#C89652" stroke-width="6" stroke-linecap="round"/>
+    <path d="M-40 -48 L-10 48 M30 -48 L60 48 M95 -36 L115 36" stroke="#B87E38" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="-115" cy="-18" r="22" fill="#D95326"/>
+    <circle cx="-110" cy="18" r="20" fill="#5A8F48"/>
+    <circle cx="-128" cy="2" r="18" fill="#E8A838"/>
+  </g>
+</svg>
+

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#F3EEE4"/>
+  <circle cx="400" cy="300" r="225" fill="#E8E0CF"/>
+  <!-- Family Tray -->
+  <rect x="195" y="190" width="410" height="225" rx="36" fill="#FFFFFF"/>
+  <rect x="215" y="210" width="370" height="185" rx="24" fill="#3B8246"/>
+  <!-- Rows of Cigkofte -->
+  <g fill="#9E2B1E">
+    <rect x="240" y="230" width="36" height="64" rx="18"/>
+    <rect x="290" y="230" width="36" height="64" rx="18"/>
+    <rect x="340" y="230" width="36" height="64" rx="18"/>
+    <rect x="390" y="230" width="36" height="64" rx="18"/>
+    <rect x="440" y="230" width="36" height="64" rx="18"/>
+    <rect x="240" y="308" width="36" height="64" rx="18"/>
+    <rect x="290" y="308" width="36" height="64" rx="18"/>
+    <rect x="340" y="308" width="36" height="64" rx="18"/>
+    <rect x="390" y="308" width="36" height="64" rx="18"/>
+    <rect x="440" y="308" width="36" height="64" rx="18"/>
+  </g>
+  <circle cx="528" cy="270" r="30" fill="#F2C94C"/>
+  <circle cx="528" cy="338" r="26" fill="#6F1D1B"/>
+</svg>
+

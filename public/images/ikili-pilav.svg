@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#F4EFE5"/>
+  <circle cx="400" cy="300" r="220" fill="#EAE2D2"/>
+  <ellipse cx="400" cy="355" rx="195" ry="68" fill="#FFFFFF"/>
+  <path d="M240 345 C255 215 545 215 560 345 Z" fill="#FDFBF7"/>
+  <!-- Dual Topping Split -->
+  <path d="M275 315 C295 245 365 235 395 250 L395 325 Z" fill="#C86D3B"/>
+  <path d="M405 250 C435 235 505 245 525 315 L405 325 Z" fill="#7D4427"/>
+  <circle cx="360" cy="332" r="12" fill="#E2A84B"/>
+  <circle cx="440" cy="332" r="12" fill="#E2A84B"/>
+</svg>
+

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#F5F1E8"/>
+  <circle cx="400" cy="300" r="215" fill="#EBE4D5"/>
+  <!-- Plate & Rice Mound -->
+  <ellipse cx="400" cy="350" rx="185" ry="65" fill="#FFFFFF"/>
+  <path d="M250 340 C260 220 540 220 550 340 Z" fill="#FDFBF7"/>
+  <!-- Toppings (Chicken / Meat / Chickpeas) -->
+  <circle cx="360" cy="265" r="26" fill="#C86D3B"/>
+  <circle cx="415" cy="255" r="28" fill="#B85A2B"/>
+  <circle cx="450" cy="285" r="24" fill="#C86D3B"/>
+  <circle cx="340" cy="300" r="14" fill="#E2A84B"/>
+  <circle cx="395" cy="302" r="14" fill="#E2A84B"/>
+</svg>
+

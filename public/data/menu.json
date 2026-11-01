@@ -1,0 +1,796 @@
+{
+  "brands": [
+    {
+      "id": "los-pollos-rico",
+      "name": "Los Pollos Rico",
+      "logo": "/uploads/ads-z-1200-x-450-piksel-4-1793301814820.svg",
+      "categories": [
+        {
+          "id": "lpr-tavuk-doner-durumler",
+          "name": "Tavuk Döner Dürümler",
+          "products": [
+            {
+              "id": "lpr-p1",
+              "name": "Medium Tavuk Döner Dürüm (100 gr)",
+              "description": "Özel fırın lavaşa 100 gr tavuk döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; soğan. Yanında acı biber turșusu ile",
+              "price": "130 ₺",
+              "image": "/uploads/1-1793565398000.jpg",
+              "available": true
+            },
+            {
+              "id": "lpr-p2",
+              "name": "Medium Tavuk Döner Dürüm Menü Ayran (100 gr)",
+              "description": "Özel fırın lavaşa 100 gr tavuk döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; soğan. Yanında ayran (Büyük), elma dilim patates kızartması, 2 adet sos,...",
+              "price": "170 ₺",
+              "image": "/uploads/2-1793565831135.jpg",
+              "available": true
+            },
+            {
+              "id": "lpr-p3",
+              "name": "Medium Tavuk Döner Dürüm Menü Pepsi (100 gr)",
+              "description": "Özel fırın lavaşa 100 gr tavuk döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; soğan. Yanında Pepsi (330 ml), elma dilim patates kızartması, 2 adet sos,...",
+              "price": "180 ₺",
+              "image": "/uploads/3-1793565834295.jpg",
+              "available": true
+            },
+            {
+              "id": "lpr-p4",
+              "name": "Large Tavuk Döner Dürüm (45 cm)",
+              "description": "1.5 adet özel fırın lavașa 125 gr tavuk döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; sogan. Yanında acı biber turşusu ile",
+              "price": "160 ₺",
+              "image": "/uploads/4-1793565837162.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793470154523",
+              "name": "Large Tavuk Döner Dürüm Menü Ayran (45 cm)",
+              "description": "1.5 adet özel fırın lavaşa 125 gr tavuk döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; sogan. Yanında ayran (Büyük), elma dilim patates kızartması,",
+              "price": "210",
+              "image": "/uploads/5-1793565840147.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793470182154",
+              "name": "Large Tavuk Döner Dürüm Menü Pepsi (45 cm)",
+              "description": "1.5 adet özel fırın lavașa 125 gr tavuk döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; soğan. Yanında Pepsi (330 ml), elma dilim patates kızartması, 2...",
+              "price": "220",
+              "image": "/uploads/6-1793565847715.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793470288838",
+              "name": "XLarge Tavuk Döner Dürüm (45 cm)",
+              "description": "2 adet özel fırın lavașa 150 gr tavuk döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; soğan. Yanında acı biber turşusu ile",
+              "price": "190",
+              "image": "/uploads/7-1793565850870.png",
+              "available": true
+            },
+            {
+              "id": "prod-1793470349856",
+              "name": "XLarge Tavuk Döner Dürüm Menü Ayran (45 cm)",
+              "description": "2 adet özel fırın lavașa 150 gr tavuk döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; soğan. Yanında ayran (Büyük), elma dilim patates kızartması,",
+              "price": "240",
+              "image": "/uploads/8-1793565853238.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793470395405",
+              "name": "XLarge Tavuk Döner Dürüm Menü Pepsi (45 cm)",
+              "description": "2 adet özel fırın lavaşa 150 gr tavuk döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; sogan. Yanında Pepsi (330 ml), elma dilim patates kızartması,",
+              "price": "250",
+              "image": "/uploads/9-1793565858381.jpg",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "lpr-et-doner-durumler",
+          "name": "Et Döner Dürümler",
+          "products": [
+            {
+              "id": "lpr-p5",
+              "name": "Medium Et Döner Dürüm (100 gr)",
+              "description": "Özel fırın lavaşa 100 gr dana et döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; soğan. Yanında acı biber turșusu ile",
+              "price": "180 ₺",
+              "image": "/uploads/10-1793565893464.jpg",
+              "available": true
+            },
+            {
+              "id": "lpr-p6",
+              "name": "Medium Et Döner Dürüm Menü Ayran (100 gr)",
+              "description": "Özel fırın lavaşa 100 gr dana et döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; soğan. Yanında ayran (Büyük), elma dilim patates kızartması, 2 adet...",
+              "price": "230 ₺",
+              "image": "/uploads/11-1793565897483.jpg",
+              "available": true
+            },
+            {
+              "id": "lpr-p7",
+              "name": "Medium Et Döner Dürüm Menü Pepsi (100 gr)",
+              "description": "Özel fırın lavaşa 100 gr dana et döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; soğan. Yanında Pepsi (330 ml), elma dilim patates kızartması, 2 adet...",
+              "price": "240 ₺",
+              "image": "/uploads/12-1793565900410.jpg",
+              "available": true
+            },
+            {
+              "id": "lpr-p8",
+              "name": "Large Et Döner Dürüm (45 cm)",
+              "description": "1.5 adet özel fırın lavașa 125 gr dana et döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; soğan. Yanında acı biber turşusu ile",
+              "price": "210 ₺",
+              "image": "/uploads/13-1793565903775.png",
+              "available": true
+            },
+            {
+              "id": "prod-1793470247505",
+              "name": "Large Et Döner Dürüm Menü Ayran (45 cm)",
+              "description": "1.5 adet özel fırın lavaşa 125 gr dana et döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; soğan. Yanında ayran (Büyük), elma dilim patates kızartması,",
+              "price": "260",
+              "image": "/uploads/14-1793565907825.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793470266074",
+              "name": "Large Et Döner Dürüm Menü Pepsi (45 cm)",
+              "description": "1.5 adet özel fırın lavașa 125 gr dana et döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; soğan. Yanında Pepsi (330 ml), elma dilim patates kızartması,...",
+              "price": "270",
+              "image": "/uploads/15-1793565911605.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793470410122",
+              "name": "XLarge Et Döner Dürüm (45 cm)",
+              "description": "2 adet özel fırın lavașa 150 gr dana et döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; soğan. Yanında acı biber turşusu ile",
+              "price": "240",
+              "image": "/uploads/16-1793565915105.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793470434923",
+              "name": "XLarge Et Döner Dürüm Menü Ayran (45 cm)",
+              "description": "2 adet özel fırın lavaşa 150 gr dana et döner, patates kızartması, salatalık turşusu, özel Los Pollos Rico sos, mayonez, tercihe göre; sogan. Yanında ayran (Büyük), elma dilim patates kızartması,",
+              "price": "290",
+              "image": "/uploads/17-1793565917707.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793470445873",
+              "name": "XLarge Et Döner Dürüm Menü Pepsi (45 cm)",
+              "description": "XLarge Et Döner Dürüm Menü Pepsi (45 cm)",
+              "price": "300",
+              "image": "/uploads/18-1793565920723.jpg",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "lpr-icecekler",
+          "name": "İçecekler",
+          "products": [
+            {
+              "id": "lpr-p13",
+              "name": "Yayık Ayran (300 ml)",
+              "description": "Günlük taze bol köpüklü yayık ayranı.",
+              "price": "35 ₺",
+              "image": "/images/icecek.svg",
+              "available": true
+            },
+            {
+              "id": "lpr-p14",
+              "name": "Kutu Kola / Fanta / Sprite",
+              "description": "330 ml soğuk kutu meşrubat çeşitleri.",
+              "price": "55 ₺",
+              "image": "/images/icecek.svg",
+              "available": true
+            },
+            {
+              "id": "lpr-p15",
+              "name": "Şalgam Suyu (300 ml)",
+              "description": "Acılı veya acısız seçenekleriyle geleneksel Adana şalgam suyu.",
+              "price": "40 ₺",
+              "image": "/images/icecek.svg",
+              "available": true
+            },
+            {
+              "id": "lpr-p16",
+              "name": "Doğal Kaynak Suyu",
+              "description": "500 ml soğuk pet şişe su.",
+              "price": "15 ₺",
+              "image": "/images/icecek.svg",
+              "available": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "x-pilav-baget",
+      "name": "X Pilav Baget",
+      "logo": "/uploads/ads-z-1200-x-450-piksel-2-1793301831530.svg",
+      "categories": [
+        {
+          "id": "xpb-x-kovalar",
+          "name": "X Kovalar",
+          "products": [
+            {
+              "id": "xpb-p1",
+              "name": "X Pilav & Baget",
+              "description": "Tereyağlı Pilav (300 gr) üzerine; özel marine edilmiş fırınlanmış tavuk baget (2 Adet), Mısır Kaburga (2 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "150",
+              "image": "/uploads/x-baget-pilav-kova-1793306491297.jpg",
+              "available": true
+            },
+            {
+              "id": "xpb-p2",
+              "name": "X - Kanat & Pilav Kova",
+              "description": "Tereyağlı Pilav (300 gr) üzerine; özel marine edilmiş fırınlanmış tavuk kanat (3 Adet), Mısır Kaburga (3 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile",
+              "price": "140 ₺",
+              "image": "/uploads/x-kanat-pilav-kova-1793306500694.jpg",
+              "available": true
+            },
+            {
+              "id": "xpb-p3",
+              "name": "X - Tiftik & Pilav Kova",
+              "description": "Tereyağlı Pilav (300 gr) üzerine; ağır ağır pişmiş tiftik tavuk eti (100 gr), Mısır Kaburga (2 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "140₺",
+              "image": "/uploads/x-tiftik-tavuk-pilav-kova-1793306512760.jpg",
+              "available": true
+            },
+            {
+              "id": "xpb-p4",
+              "name": "X - Tavuk Döner & Pilav Kova",
+              "description": "Tereyağlı Pilav (300 gr) üzerine; tavuk döner (100 gr), Mısır Kaburga (2 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "140 ₺",
+              "image": "/uploads/x-tavuk-do-ner-pilav-kova--1793306522330.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793306405481",
+              "name": "X - Et Döner & Pilav Kova",
+              "description": "Tereyağlı Pilav (300 gr) üzerine; et yaprak döner (100 gr), Mısır Kaburga (2 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "190",
+              "image": "/uploads/x-et-do-ner-pilav-kova-1793306532035.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793306440131",
+              "name": "X - Kavurma & Pilav Kova",
+              "description": "Tereyağlı Pilav (300 gr) üzerine; dana kavurma (100 gr), Mısır Kaburga (2 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "190",
+              "image": "/uploads/x-kavurma-pilav-kova-1793306540190.jpg",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "xpb-xl-kovalar",
+          "name": "XL Kovalar",
+          "products": [
+            {
+              "id": "xpb-p5",
+              "name": "XLarge - Baget & Pilav Kova",
+              "description": "Tereyağlı Pilav (400 gr) üzerine; özel marine edilmiş fırınlanmış tavuk baget (3 Adet), Mısır Kaburga (3 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "180 ₺",
+              "image": "/uploads/xl-baget-pilav-kova-1793306784625.jpg",
+              "available": true
+            },
+            {
+              "id": "xpb-p6",
+              "name": "XLarge - Kanat & Pilav Kova",
+              "description": "Tereyağlı Pilav (400 gr) üzerine; özel marine edilmiş fırınlanmış tavuk kanat (4 Adet), Mısır Kaburga (4 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "170 ₺",
+              "image": "/uploads/xl-kanat-pilav-kova-1793306794759.jpg",
+              "available": true
+            },
+            {
+              "id": "xpb-p7",
+              "name": "XLarge - Tiftik & Pilav Kova",
+              "description": "Tereyağlı Pilav (400 gr) üzerine; ağır ağır pişmiş tiftik tavuk eti (150 gr), Mısır Kaburga (3 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "170 ₺",
+              "image": "/uploads/xl-tiftik-tavuk-pilav-kova-1793306800629.jpg",
+              "available": true
+            },
+            {
+              "id": "xpb-p8",
+              "name": "XLarge - Tavuk Döner & Pilav Kova",
+              "description": "Tereyağlı Pilav (400 gr) üzerine; tavuk döner (150 gr), Mısır Kaburga (3 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "170 ₺",
+              "image": "/uploads/xl-tavuk-do-ner-pilav-kova-1793306807882.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793306726216",
+              "name": "XLarge - Et Döner & Pilav Kova",
+              "description": "Tereyağlı Pilav (400 gr) üzerine; et yaprak döner (150 gr), Mısır Kaburga (3 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "240",
+              "image": "/uploads/xl-et-do-ner-pilav-kova-1793306813427.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793306765083",
+              "name": "XLarge Kavurma & Pilav Kova",
+              "description": "Tereyağlı Pilav (400 gr) üzerine; dana kavurma (150 gr), Mısır Kaburga (3 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "240",
+              "image": "/uploads/xl-kavurma-pilav-kova-1793306818614.jpg",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "x-pilav-baget-1793305376224",
+          "name": "XXL Kovalar",
+          "products": [
+            {
+              "id": "prod-1793305468557",
+              "name": "XXLarge - Baget & Pilav Kova",
+              "description": "Tereyağlı Pilav (500 gr) üzerine; özel marine edilmiş fırınlanmış tavuk baget (4 Adet), Mısır Kaburga (4 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "220",
+              "image": "/uploads/xxl-baget-pilav-kova-1793306556458.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793305498403",
+              "name": "XXLarge - Kanat & Pilav Kova",
+              "description": "Tereyağlı Pilav (500 gr) üzerine; özel marine edilmiş fırınlanmış tavuk kanat (6 Adet), Mısır Kaburga (6 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "220",
+              "image": "/uploads/xxl-kanat-pilav-kova-1793306565072.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793305532719",
+              "name": "XXLarge - Tiftik & Pilav Kova",
+              "description": "Tereyağlı Pilav (500 gr) üzerine; ağır ağır pişmiş tiftik tavuk eti (200 gr), Mısır Kaburga (4 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "220",
+              "image": "/uploads/xxl-tiftik-tavuk-pilav-kova-1793306574687.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793305560770",
+              "name": "XXLarge - Tavuk Döner & Pilav Kova",
+              "description": "Tereyağlı Pilav (500 gr) üzerine; tavuk döner (200 gr), Mısır Kaburga (4 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "220",
+              "image": "/uploads/xxl-tavuk-do-ner-pilav-kova-1793306594102.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793305584770",
+              "name": "XXLarge - Et Döner & Pilav Kova",
+              "description": "Tereyağlı Pilav (500 gr) üzerine; et yaprak döner (200 gr), Mısır Kaburga (4 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "290",
+              "image": "/uploads/xxl-et-do-ner-pilav-kova-1793306605784.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793305609912",
+              "name": "XXLarge - Kavurma & Pilav Kova",
+              "description": "Tereyağlı Pilav (500 gr) üzerine; dana kavurma (200 gr), Mısır Kaburga (4 Adet). Yanında Coleslaw, Turşu Biberi, Salatalık Turşusu ve X-Green Sos ile.",
+              "price": "290",
+              "image": "/uploads/xxl-kavurma-pilav-kova-1793306612733.jpg",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "xpb-icecekler",
+          "name": "İçecekler",
+          "products": [
+            {
+              "id": "xpb-p9",
+              "name": "Kutu İçecek (330 ml)",
+              "description": "Coca-Cola, Coca-Cola Zero, Fanta, Sprite veya Ice Tea.",
+              "price": "55 ₺",
+              "image": "/uploads/20-bu-grsellerin-hepsini-dz-beyaz-zemin--1793306922152.jpg",
+              "available": true
+            },
+            {
+              "id": "xpb-p10",
+              "name": "Büyük Ayran (300 ml)",
+              "description": "Soğuk tam yağlı ayran.",
+              "price": "35 ₺",
+              "image": "/uploads/19-bu-grsellerin-hepsini-dz-beyaz-zemin--1793306930932.jpg",
+              "available": true
+            },
+            {
+              "id": "xpb-p11",
+              "name": "Litrelik İçecek (1 L)",
+              "description": "Kova menüler için paylaşımlık 1 Litre Coca-Cola veya Fanta.",
+              "price": "90 ₺",
+              "image": "/images/icecek.svg",
+              "available": true
+            },
+            {
+              "id": "xpb-p12",
+              "name": "Su (500 ml)",
+              "description": "Doğal kaynak suyu.",
+              "price": "15 ₺",
+              "image": "/uploads/29-bu-grsellerin-hepsini-dz-beyaz-zemin--1793306945150.jpg",
+              "available": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pilavdar",
+      "name": "Pilavdar",
+      "logo": "/uploads/ads-z-1200-x-450-piksel--1793301824913.svg",
+      "categories": [
+        {
+          "id": "plv-pilav-ustu-lezzetler",
+          "name": "Pilav Üstü Lezzetler",
+          "products": [
+            {
+              "id": "plv-p1",
+              "name": "Pilav Üstü Kuru Fasulye (1,5 Porsiyon)",
+              "description": "Pilav Üstü Kuru Fasulye (400 - 450 gr). Coleslaw, salatalık turşusu, acı biber turşusu ile",
+              "price": "110 ₺",
+              "image": "/uploads/pilav-u-stu-kuru-1793566733382.jpg",
+              "available": true
+            },
+            {
+              "id": "plv-p2",
+              "name": "Pilav Üstü Kuru Fasulye (Duble)",
+              "description": "Pilav Üstü Kuru Fasulye (600 - 650 gr). Coleslaw, salatalık turşusu, acı biber turşusu ile",
+              "price": "155 ₺",
+              "image": "/uploads/pilav-u-stu-kuru-1793566741177.jpg",
+              "available": true
+            },
+            {
+              "id": "plv-p3",
+              "name": "Pilav Üstü Tiftik Tavuk (1,5 Porsiyon)",
+              "description": "Pilav Üstü Tiftik Tavuk (400 - 450 gr). Coleslaw, salatalık turşusu, acı biber turşusu ile",
+              "price": "245 ₺",
+              "image": "/uploads/pilav-u-stu-tiftik-1793566761558.jpg",
+              "available": true
+            },
+            {
+              "id": "plv-p4",
+              "name": "Pilav Üstü Tiftik Tavuk (Duble)",
+              "description": "Pilav Ustü Tiftik Tavuk (600 - 650 gr). Coleslaw, salatalık turşusu, acı biber turșusu ile",
+              "price": "150 ₺",
+              "image": "/uploads/pilav-u-stu-tiftik-1793566768014.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793349303640",
+              "name": "Pilav Üstü Köri Soslu Tavuk (1,5 Porsiyon)",
+              "description": "Pilav Üstü Köri Soslu Tavuk (400 - 450 gr). Coleslaw, salatalık turșusu, acı biber turșusu ile",
+              "price": "150",
+              "image": "/uploads/pilav-u-stu-ko-ri-1793566782557.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793566150786",
+              "name": "Pilav Üstü Köri Soslu Tavuk (Duble)",
+              "description": "Pilav Üstü Köri Soslu Tavuk (600 - 650 gr). Coleslaw, salatalık turşusu, acı biber turșusu ile",
+              "price": "175 ₺",
+              "image": "/uploads/pilav-u-stu-ko-ri-1793566786896.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793566169582",
+              "name": "Pilav Üstü Tavuk Sote (1,5 Porsiyon)",
+              "description": "Pilav Üstü Tavuk Sote (400 - 450 gr). Coleslaw, salatalık turșusu, acı biber turșusu ile",
+              "price": "150 ₺",
+              "image": "/uploads/pilav-u-stu-sote-1793566791681.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793566183714",
+              "name": "Pilav Üstü Tavuk Sote (Duble)",
+              "description": "Pilav Üstü Tavuk Sote (600 - 650 gr). Coleslaw, salatalık turșusu, acı biber turșusu ile",
+              "price": "175 ₺",
+              "image": "/uploads/pilav-u-stu-sote-1793566795463.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793566203149",
+              "name": "Pilav Üstü Tavuk Döner (1,5 Porsiyon)",
+              "description": "Pilav Üstü Tavuk Döner (400 - 450 gr). Coleslaw, salatalık turşusu, acı biber turşusu ile",
+              "price": "160 ₺",
+              "image": "/uploads/pilav-u-stu-tavuk-do-ner-1793566828738.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793566216381",
+              "name": "Pilav Üstü Tavuk Döner (Duble)",
+              "description": "Pilav Üstü Tavuk Döner (600 - 650 gr). Coleslaw, salatalık turşusu, acı biber turşusu ile",
+              "price": "160 ₺",
+              "image": "/uploads/pilav-u-stu-tavuk-do-ner-1793566833019.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793566265398",
+              "name": "Pilav Üstü Et Döner (1,5 Porsiyon)",
+              "description": "Pilav Üstü Et Döner (400 - 450 gr). Coleslaw, salatalık turşusu, acı biber turşusu ile",
+              "price": "190 ₺",
+              "image": "/uploads/pilav-u-stu-et-do-ner-1793566838175.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793566278514",
+              "name": "Pilav Üstü Et Döner (Duble)",
+              "description": "Pilav Üstü Et Döner (600 - 650 gr). Coleslaw, salatalık turșusu, acı biber turşusu ile",
+              "price": "230 ₺",
+              "image": "/uploads/pilav-u-stu-et-do-ner-1793566840540.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793566288448",
+              "name": "Pilav Üstü Kavurma (1,5 Porsiyon)",
+              "description": "Pilav Üstü Kavurma (400 - 450 gr). Coleslaw, salatalık turşusu, acı biber turşusu ile",
+              "price": "190 ₺",
+              "image": "/uploads/pilav-u-stu-kavurma-1793566842864.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793566303082",
+              "name": "Pilav Üstü Kavurma (Duble)",
+              "description": "Pilav Üstü Kavurma (600 - 650 gr). Coleslaw, salatalık turșusu, acı biber turșusu ile",
+              "price": "230 ₺",
+              "image": "/uploads/pilav-u-stu-kavurma-1793566844780.jpg",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "plv-ikili-pilav-ustu-lezzetler",
+          "name": "İkili Pilav Üstü Lezzetler",
+          "products": [
+            {
+              "id": "plv-p5",
+              "name": "Pilav Üstü Kuru Fasulye & Tiftik Tavuk (1,5 Porsiyon)",
+              "description": "Pilav Ustü Kuru Fasulye & Tiftik Tavuk (400 - 450 gr). Coleslaw, salatalık turşusu, acı biber turşusu ile",
+              "price": "150 ₺",
+              "image": "/uploads/kuru-tiftik-1793566854614.jpg",
+              "available": true
+            },
+            {
+              "id": "plv-p6",
+              "name": "Pilav Üstü Kuru Fasulye & Tiftik Tavuk (Duble)",
+              "description": "Pilav Ustü Kuru Fasulye & Tiftik Tavuk (600 - 650 gr). Coleslaw, salatalık turşusu, acı biber turşusu ile",
+              "price": "175 ₺",
+              "image": "/uploads/kuru-tiftik-1793566859754.jpg",
+              "available": true
+            },
+            {
+              "id": "plv-p7",
+              "name": "Pilav Üstü Kuru Fasulye & Köri Soslu Tavuk (1,5 Porsiyon)",
+              "description": "Pilav Üstü Kuru Fasulye & Köri Soslu Tavuk (400 - 450 gr). Coleslaw, salatalık turşusu, acı biber turșusu ile",
+              "price": "175 ₺",
+              "image": "/uploads/kuru-ko-ri-1793566896747.jpg",
+              "available": true
+            },
+            {
+              "id": "plv-p8",
+              "name": "Pilav Üstü Kuru Fasulye & Köri Soslu Tavuk (Duble)",
+              "description": "Pilav Üstü Kuru Fasulye & Körü Soslu Tavuk (600 - 650 gr). Coleslaw, salatalık turșusu, acı biber turșusu ile",
+              "price": "175 ₺",
+              "image": "/uploads/kuru-ko-ri-1793566899917.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793566513418",
+              "name": "Pilav Üstü Tiftik & Köri Soslu Tavuk (1,5 Porsiyon)",
+              "description": "Pilav Üstü Tiftik & Köri Soslu Tavuk (400 - 450 gr). Coleslaw, salatalık turşusu, acı biber turșusu ile",
+              "price": "150 ₺",
+              "image": "/uploads/tiftik-ko-ri-1793566914654.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793566531983",
+              "name": "Pilav Üstü Tiftik & Köri Soslu Tavuk (Duble)",
+              "description": "Pilav Üstü Tiftik & Köri Soslu Tavuk (600 - 650 gr). Coleslaw, salatalık turşusu, acı biber turşusu ile",
+              "price": "175 ₺",
+              "image": "/uploads/tiftik-ko-ri-1793566917304.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793566556349",
+              "name": "Pilav Üstü Köri Soslu & Tavuk Sote (1,5 Porsiyon)",
+              "description": "Pilav Üstü Köri Soslu & Tavuk Sote (400 - 450 gr). Coleslaw, salatalık turşusu, acı biber turșusu ile",
+              "price": "150 ₺",
+              "image": "/uploads/ko-ri-sote-1793566940006.jpg",
+              "available": true
+            },
+            {
+              "id": "prod-1793566568733",
+              "name": "Pilav Üstü Köri & Tavuk Sote (Duble)",
+              "description": "Pilav Üstü Köri & Tavuk Sote (600 - 650 gr). Coleslaw, salatalık turşusu, acı biber turşusu ile",
+              "price": "175 ₺",
+              "image": "/uploads/ko-ri-sote-1793566942198.jpg",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "plv-icecekler",
+          "name": "İçecekler",
+          "products": [
+            {
+              "id": "plv-p11",
+              "name": "Köpüklü Yayık Ayran",
+              "description": "Pilavın en iyi eşlikçisi soğuk yayık ayranı.",
+              "price": "35 ₺",
+              "image": "/images/icecek.svg",
+              "available": true
+            },
+            {
+              "id": "plv-p12",
+              "name": "Kutu Meşrubat Çeşitleri",
+              "description": "Coca-Cola, Fanta, Sprite veya Fuse Tea (330 ml).",
+              "price": "55 ₺",
+              "image": "/images/icecek.svg",
+              "available": true
+            },
+            {
+              "id": "plv-p13",
+              "name": "Acılı / Acısız Şalgam",
+              "description": "300 ml geleneksel fermente şalgam suyu.",
+              "price": "40 ₺",
+              "image": "/images/icecek.svg",
+              "available": true
+            },
+            {
+              "id": "plv-p14",
+              "name": "Su (500 ml)",
+              "description": "Doğal kaynak suyu.",
+              "price": "15 ₺",
+              "image": "/images/icecek.svg",
+              "available": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cigkofteci-sait",
+      "name": "Çiğköfteci Sait",
+      "logo": "/uploads/ads-z-1200-x-450-piksel-3-1793301838886.svg",
+      "categories": [
+        {
+          "id": "cks-durumler",
+          "name": "Dürümler",
+          "products": [
+            {
+              "id": "cks-p1",
+              "name": "Klasik Çiğköfte Dürüm",
+              "description": "Taze lavaş arasında 100 gr özel yoğrulmuş çiğköfte, göbek marul, nane, maydanoz, limon ve nar ekşisi.",
+              "price": "85 ₺",
+              "image": "/images/cigkofte-durum.svg",
+              "available": true
+            },
+            {
+              "id": "cks-p2",
+              "name": "Mega Duble Çiğköfte Dürüm",
+              "description": "Çift lavaş içinde 160 gr bol çiğköfte, taze yeşillikler, domates, kornişon turşu ve bol nar ekşisi.",
+              "price": "120 ₺",
+              "image": "/images/cigkofte-durum.svg",
+              "available": true
+            },
+            {
+              "id": "cks-p3",
+              "name": "Doritoslu Ultra Çiğköfte Dürüm",
+              "description": "Bol çiğköfte, çıtır Doritos parçaları, göbek marul, mısır, özel acı sos ve nar ekşisi.",
+              "price": "130 ₺",
+              "image": "/images/cigkofte-durum.svg",
+              "available": true
+            },
+            {
+              "id": "cks-p4",
+              "name": "Cevizli Özel Sait Dürüm",
+              "description": "İri kıyım kelebek ceviz içi, 130 gr çiğköfte, taze nane, roka ve özel nar ekşisi sosu.",
+              "price": "140 ₺",
+              "image": "/images/cigkofte-durum.svg",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "cks-porsiyonlar",
+          "name": "Porsiyonlar",
+          "products": [
+            {
+              "id": "cks-p5",
+              "name": "Tek Kişilik Porsiyon (200 gr)",
+              "description": "8 sıkım çiğköfte, yarım göbek marul, taze nane, limon, 2 adet lavaş ve nar ekşisi.",
+              "price": "150 ₺",
+              "image": "/images/cigkofte-porsiyon.svg",
+              "available": true
+            },
+            {
+              "id": "cks-p6",
+              "name": "İki Kişilik Porsiyon (400 gr)",
+              "description": "16 sıkım çiğköfte, tam göbek marul, yeşillik tabağı, limon, 4 adet lavaş, acı sos ve nar ekşisi.",
+              "price": "275 ₺",
+              "image": "/images/cigkofte-porsiyon.svg",
+              "available": true
+            },
+            {
+              "id": "cks-p7",
+              "name": "Garnitürlü Özel Porsiyon (300 gr)",
+              "description": "12 sıkım çiğköfte, jalapeno biber, kornişon turşu, mısır, yeşillik paketi ve 3 adet lavaş.",
+              "price": "225 ₺",
+              "image": "/images/cigkofte-porsiyon.svg",
+              "available": true
+            },
+            {
+              "id": "cks-p8",
+              "name": "Öğrenci Eko Porsiyon (150 gr)",
+              "description": "6 sıkım çiğköfte, göbek marul, limon, nar ekşisi ve 2 adet lavaş.",
+              "price": "120 ₺",
+              "image": "/images/cigkofte-porsiyon.svg",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "cks-kiloluk-cigkofteler",
+          "name": "Kiloluk Çiğköfteler",
+          "products": [
+            {
+              "id": "cks-p9",
+              "name": "Yarım Kilo Çiğköfte Paketi (500 gr)",
+              "description": "500 gr sıkım çiğköfte, 1 adet tam göbek marul, bol yeşillik, 2 limon, 5 adet lavaş, acı sos ve nar ekşisi.",
+              "price": "330 ₺",
+              "image": "/images/cigkofte-kilo.svg",
+              "available": true
+            },
+            {
+              "id": "cks-p10",
+              "name": "1 Kilo Aile Çiğköfte Paketi (1000 gr)",
+              "description": "1000 gr sıkım çiğköfte, 2 adet tam göbek marul, nane, roka, maydanoz, 10 adet lavaş ve şişe nar ekşisi.",
+              "price": "620 ₺",
+              "image": "/images/cigkofte-kilo.svg",
+              "available": true
+            },
+            {
+              "id": "cks-p11",
+              "name": "1.5 Kilo Parti & Davet Tepsisi",
+              "description": "1500 gr özel sunum tepsisinde çiğköfte, 3 göbek marul, garnitür seti, 15 adet lavaş ve sos seti.",
+              "price": "890 ₺",
+              "image": "/images/cigkofte-kilo.svg",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "cks-icecekler",
+          "name": "İçecekler",
+          "products": [
+            {
+              "id": "cks-p12",
+              "name": "Bol Köpüklü Ayran (300 ml)",
+              "description": "Çiğköftenin vazgeçilmezi soğuk yayık ayranı.",
+              "price": "35 ₺",
+              "image": "/images/icecek.svg",
+              "available": true
+            },
+            {
+              "id": "cks-p13",
+              "name": "Acılı / Acısız Şalgam Suyu",
+              "description": "300 ml gerçek siyah havuçtan fermente şalgam suyu.",
+              "price": "40 ₺",
+              "image": "/images/icecek.svg",
+              "available": true
+            },
+            {
+              "id": "cks-p14",
+              "name": "Litrelik Ayran (1 L)",
+              "description": "Kiloluk paketlerin yanına 1 Litre soğuk aile ayranı.",
+              "price": "85 ₺",
+              "image": "/images/icecek.svg",
+              "available": true
+            },
+            {
+              "id": "cks-p15",
+              "name": "Doğal Kaynak Suyu",
+              "description": "500 ml soğuk su.",
+              "price": "15 ₺",
+              "image": "/images/icecek.svg",
+              "available": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

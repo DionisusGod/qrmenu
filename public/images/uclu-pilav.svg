@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#F3EEE4"/>
+  <circle cx="400" cy="300" r="220" fill="#E8DFCE"/>
+  <ellipse cx="400" cy="360" rx="205" ry="72" fill="#FFFFFF"/>
+  <path d="M230 350 C250 210 550 210 570 350 Z" fill="#FDFBF7"/>
+  <!-- Triple Topping Crown -->
+  <circle cx="325" cy="285" r="38" fill="#C86D3B"/>
+  <circle cx="400" cy="265" r="42" fill="#7D4427"/>
+  <circle cx="475" cy="285" r="38" fill="#B84B32"/>
+  <circle cx="365" cy="330" r="13" fill="#E2A84B"/>
+  <circle cx="400" cy="334" r="13" fill="#E2A84B"/>
+  <circle cx="435" cy="330" r="13" fill="#E2A84B"/>
+</svg>
+
