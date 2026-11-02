@@ -124,6 +124,63 @@ function renderBrandMenuView(menuData, brandId) {
     activeProducts: (cat.products || []).filter((p) => p.available !== false)
   }));
 
+  const totalActiveProducts = visibleCategories.reduce(
+    (sum, cat) => sum + cat.activeProducts.length,
+    0
+  );
+
+  if (visibleCategories.length === 0 || totalActiveProducts === 0) {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    appEl.innerHTML = `
+      <div class="w-full max-w-md mx-auto min-h-dvh bg-offwhite flex flex-col justify-between p-5 view-enter select-none">
+        <header class="flex items-center">
+          <button
+            type="button"
+            id="btn-back-home"
+            aria-label="Marka Seçimine Dön"
+            class="w-10 h-10 rounded-full bg-white/90 shadow-xs flex items-center justify-center active:scale-90 transition cursor-pointer"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#141413" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+        </header>
+
+        <main class="flex-1 flex flex-col items-center justify-center text-center px-3">
+          <div class="w-full bg-white rounded-3xl p-8 shadow-[0_8px_28px_rgba(20,20,19,0.08)] border border-black/[0.03] flex flex-col items-center space-y-4">
+            <div class="w-16 h-16 rounded-2xl bg-offwhite flex items-center justify-center text-3xl">
+              🚧
+            </div>
+            <h1 class="text-xl leading-snug cal-bold text-neutral-900">
+              Bu sayfa şu anda yapım aşamasında!
+            </h1>
+            <p class="text-sm cal-normal text-neutral-600 leading-relaxed">
+              ${escapeHtml(brand.name)} menüsü çok yakında burada yerini alacak.
+            </p>
+            <button
+              type="button"
+              id="btn-back-home-card"
+              style="background-color: #141413; color: #FFFFFF;"
+              class="mt-2 px-6 py-3 rounded-xl text-xs cal-bold active:scale-95 transition cursor-pointer shadow-xs"
+            >
+              ← Diğer Markalara Göz At
+            </button>
+          </div>
+        </main>
+
+        <div class="h-10"></div>
+      </div>
+    `;
+
+    const goHome = () => {
+      brandScrollPositions.set(brandId, 0);
+      navigateTo('/');
+    };
+    appEl.querySelector('#btn-back-home')?.addEventListener('click', goHome);
+    appEl.querySelector('#btn-back-home-card')?.addEventListener('click', goHome);
+    return;
+  }
+
   const firstCatId = visibleCategories[0]?.id || '';
 
   appEl.innerHTML = `
