@@ -357,12 +357,49 @@ function renderDashboard(container, menuData, preserveScroll = true) {
                   : `<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       ${cat.products
                         .map(
-                          (prod) => `
-                        <div class="flex items-center gap-3 p-3 rounded-xl border ${
-                          prod.available === false
-                            ? 'bg-neutral-100 border-neutral-300 opacity-70'
-                            : 'bg-offwhite/70 border-neutral-200'
-                        }">
+                          (prod, prodIndex) => `
+                        <div
+                          data-prod-card="${escapeHtml(prod.id)}"
+                          data-prod-cat="${escapeHtml(cat.id)}"
+                          data-prod-idx="${prodIndex}"
+                          draggable="true"
+                          class="flex items-center gap-2.5 p-3 rounded-xl border transition-all ${
+                            prod.available === false
+                              ? 'bg-neutral-100 border-neutral-300 opacity-70'
+                              : 'bg-offwhite/70 border-neutral-200'
+                          }"
+                        >
+                          <!-- Product Order (#1, #2), Drag Handle & Up/Down Buttons -->
+                          <div class="flex flex-col items-center gap-1 shrink-0 select-none">
+                            <div
+                              data-drag-handle="${escapeHtml(prod.id)}"
+                              title="Basılı tutup sürükleyerek sırasını değiştirin"
+                              style="touch-action: none; cursor: grab;"
+                              class="px-1.5 py-0.5 rounded bg-neutral-200/90 text-neutral-800 text-[11px] cal-bold flex items-center gap-0.5 active:scale-95"
+                            >
+                              <span>⠿</span>
+                              <span>#${prodIndex + 1}</span>
+                            </div>
+                            <div class="flex items-center gap-0.5">
+                              <button
+                                type="button"
+                                data-prod-up="${escapeHtml(prod.id)}"
+                                data-cat-id="${escapeHtml(cat.id)}"
+                                ${prodIndex === 0 ? 'disabled' : ''}
+                                title="Öne / Yukarı Taşı"
+                                class="w-6 h-6 rounded border border-neutral-300 bg-white text-neutral-800 text-[11px] cal-bold hover:bg-neutral-200 disabled:opacity-30 cursor-pointer flex items-center justify-center"
+                              >↑</button>
+                              <button
+                                type="button"
+                                data-prod-down="${escapeHtml(prod.id)}"
+                                data-cat-id="${escapeHtml(cat.id)}"
+                                ${prodIndex === cat.products.length - 1 ? 'disabled' : ''}
+                                title="Arkaya / Aşağı Taşı"
+                                class="w-6 h-6 rounded border border-neutral-300 bg-white text-neutral-800 text-[11px] cal-bold hover:bg-neutral-200 disabled:opacity-30 cursor-pointer flex items-center justify-center"
+                              >↓</button>
+                            </div>
+                          </div>
+
                           <button
                             type="button"
                             data-quick-photo="${escapeHtml(prod.id)}"
@@ -1011,6 +1048,165 @@ function bindDashboardEvents(container, menuData, activeBrand) {
     });
   });
 
+  // Product Move Up (↑) inside category
+  container.querySelectorAll('[data-prod-up]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const prodId = btn.getAttribute('data-prod-up');
+      const catId = btn.getAttribute('data-cat-id');
+      const cat = activeBrand.categories.find((c) => c.id === catId);
+      if (!cat) return;
+      const idx = cat.products.findIndex((p) => p.id === prodId);
+      if (idx > 0) {
+        const temp = cat.products[idx - 1];
+        cat.products[idx - 1] = cat.products[idx];
+        cat.products[idx] = temp;
+        await saveMenuData(menuData);
+        renderDashboard(container, menuData, true);
+        showToast(container, 'Ürün bir üst sıraya taşındı.');
+      }
+    });
+  });
+
+  // Product Move Down (↓) inside category
+  container.querySelectorAll('[data-prod-down]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const prodId = btn.getAttribute('data-prod-down');
+      const catId = btn.getAttribute('data-cat-id');
+      const cat = activeBrand.categories.find((c) => c.id === catId);
+      if (!cat) return;
+      const idx = cat.products.findIndex((p) => p.id === prodId);
+      if (idx >= 0 && idx < cat.products.length - 1) {
+        const temp = cat.products[idx + 1];
+        cat.products[idx + 1] = cat.products[idx];
+        cat.products[idx] = temp;
+        await saveMenuData(menuData);
+        renderDashboard(container, menuData, true);
+        showToast(container, 'Ürün bir alt sıraya taşındı.');
+      }
+    });
+  });
+
+  // Product Drag & Drop Reordering (Desktop HTML5 Drag + Mobile Touch Handle Drag)
+  let dragSourceCatId = null;
+  let dragSourceIdx = -1;
+
+  const moveProductInCategory = async (catId, fromIdx, toIdx) => {
+    if (fromIdx === toIdx || fromIdx < 0 || toIdx < 0) return;
+    const cat = activeBrand.categories.find((c) => c.id === catId);
+    if (!cat || !cat.products[fromIdx] || !cat.products[toIdx]) return;
+    const [moved] = cat.products.splice(fromIdx, 1);
+    cat.products.splice(toIdx, 0, moved);
+    await saveMenuData(menuData);
+    renderDashboard(container, menuData, true);
+    showToast(container, `"${moved.name}" #${toIdx + 1} sırasına taşındı.`);
+  };
+
+  container.querySelectorAll('[data-prod-card]').forEach((card) => {
+    card.addEventListener('dragstart', (e) => {
+      // Do not start drag if interacting with an input
+      if (e.target.tagName === 'INPUT') {
+        e.preventDefault();
+        return;
+      }
+      dragSourceCatId = card.getAttribute('data-prod-cat');
+      dragSourceIdx = Number(card.getAttribute('data-prod-idx'));
+      card.style.opacity = '0.45';
+      if (e.dataTransfer) {
+        e.dataTransfer.effectAllowed = 'move';
+      }
+    });
+
+    card.addEventListener('dragend', () => {
+      card.style.opacity = '';
+      dragSourceCatId = null;
+      dragSourceIdx = -1;
+      container.querySelectorAll('[data-prod-card]').forEach((c) => {
+        c.style.outline = '';
+      });
+    });
+
+    card.addEventListener('dragover', (e) => {
+      const targetCatId = card.getAttribute('data-prod-cat');
+      if (!dragSourceCatId || targetCatId !== dragSourceCatId) return;
+      e.preventDefault();
+      card.style.outline = '2px dashed #2563EB';
+    });
+
+    card.addEventListener('dragleave', () => {
+      card.style.outline = '';
+    });
+
+    card.addEventListener('drop', async (e) => {
+      e.preventDefault();
+      card.style.outline = '';
+      const targetCatId = card.getAttribute('data-prod-cat');
+      const targetIdx = Number(card.getAttribute('data-prod-idx'));
+      if (dragSourceCatId && targetCatId === dragSourceCatId && dragSourceIdx !== targetIdx) {
+        await moveProductInCategory(targetCatId, dragSourceIdx, targetIdx);
+      }
+    });
+  });
+
+  // Touch / Pointer Drag on the "⠿ #1" handle for mobile phones & tablets
+  container.querySelectorAll('[data-drag-handle]').forEach((handle) => {
+    let touchCatId = null;
+    let touchFromIdx = -1;
+    let touchTargetCard = null;
+    let sourceCardEl = null;
+
+    handle.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse') return; // Mouse uses native HTML5 drag on the card
+      sourceCardEl = handle.closest('[data-prod-card]');
+      if (!sourceCardEl) return;
+      touchCatId = sourceCardEl.getAttribute('data-prod-cat');
+      touchFromIdx = Number(sourceCardEl.getAttribute('data-prod-idx'));
+      sourceCardEl.style.opacity = '0.5';
+      handle.setPointerCapture?.(e.pointerId);
+    });
+
+    handle.addEventListener('pointermove', (e) => {
+      if (touchFromIdx < 0 || !touchCatId) return;
+      const elUnderFinger = document.elementFromPoint(e.clientX, e.clientY);
+      const candidateCard = elUnderFinger?.closest('[data-prod-card]');
+
+      container.querySelectorAll('[data-prod-card]').forEach((c) => {
+        c.style.outline = '';
+      });
+
+      if (candidateCard && candidateCard.getAttribute('data-prod-cat') === touchCatId) {
+        touchTargetCard = candidateCard;
+        candidateCard.style.outline = '2px dashed #2563EB';
+      } else {
+        touchTargetCard = null;
+      }
+    });
+
+    const finishTouchDrag = async () => {
+      if (sourceCardEl) sourceCardEl.style.opacity = '';
+      container.querySelectorAll('[data-prod-card]').forEach((c) => {
+        c.style.outline = '';
+      });
+      if (touchTargetCard && touchCatId) {
+        const toIdx = Number(touchTargetCard.getAttribute('data-prod-idx'));
+        const catId = touchCatId;
+        const fromIdx = touchFromIdx;
+        touchCatId = null;
+        touchFromIdx = -1;
+        touchTargetCard = null;
+        if (fromIdx !== toIdx) {
+          await moveProductInCategory(catId, fromIdx, toIdx);
+        }
+      } else {
+        touchCatId = null;
+        touchFromIdx = -1;
+        touchTargetCard = null;
+      }
+    };
+
+    handle.addEventListener('pointerup', finishTouchDrag);
+    handle.addEventListener('pointercancel', finishTouchDrag);
+  });
+
   // Quick 1-Click Price Edit Shortcut
   container.querySelectorAll('[data-quick-price]').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -1331,3 +1527,4 @@ function bindDashboardEvents(container, menuData, activeBrand) {
     });
   }
 }
+
